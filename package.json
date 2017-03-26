@@ -1,0 +1,45 @@
+{
+  "name": "nascent-vr",
+  "version": "1.0.0",
+  "description": "Aframe starterkit",
+  "repository": "git@github.com:shaundunne/aframe-go.git",
+  "author": "Shaun Dunne <shaun@studiozero.co>",
+  "license": "MIT",
+  "scripts": {
+    "setup": "mkdir dist dist/assets dist/assets/js dist/assets/css && run-s build:*",
+    "start": "run-p start:budo watch:* & wait",
+    "start:budo": "budo src/assets/js/main.js:dist/assets/js/main.js --dir ./dist/ --serve assets/js/main.js --live --verbose --port 3000",
+    "prebuild": "rimraf dist/assts/{css/*,js/*,images/*}",
+    "build": "run-s build:*",
+    "build:html": "pug src/index.pug -o dist/",
+    "build:css": "node-sass src/assets/sass/index.scss dist/assets/css/main.css",
+    "build:js": "browserify src/assets/js/main.js -o dist/assets/js/main.js",
+    "build:images": "imagemin src/assets/images/* -o dist/assets/images",
+    "build:models": "cp -r src/assets/models dist/assets",
+    "build:sound": "cp -r src/assets/sound dist/assets",
+    "watch:html": "onchange \"src/*.pug\" -- npm run build:html",
+    "watch:css": "onchange \"src/assets/sass\" -- npm run build:css",
+    "watch:images": "onchange \"src/assets/images\" -- npm run build:images",
+    "deploy:upload": "surge -p dist -d nascentvr.surge.sh",
+    "deploy": "run-s build deploy:upload"
+  },
+  "dependencies": {
+    "aframe": "^0.5.0"
+  },
+  "devDependencies": {
+    "aframe-orbit-controls-component": "^1.0.0",
+    "aframe-orbit-controls-component-2": "^0.1.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "budo": "^9.4.7",
+    "imagemin-cli": "^3.0.0",
+    "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.1",
+    "onchange": "^3.2.1",
+    "pug": "^2.0.0-beta10",
+    "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^2.5.4",
+    "uglifyjs": "^2.4.10"
+  }
+}

@@ -1,0 +1,60 @@
+.logo{
+	position: absolute;
+	z-index: 100;
+	width: 150px;
+	right: 25px;
+	top: 25px;
+}
+
+#intro{
+	height:100%;
+	width:100%;
+	background: url("../images/background.jpg");
+	background-size:cover;
+	position:absolute;
+	z-index:99;
+
+
+	color:#ccc;
+
+
+	.intro-content{
+		width: 320px;
+    background: rgba(255,255,255,0.2);
+    height: 480px;
+    text-align: center;
+    top:50%;
+    left:50%;
+    position:absolute;
+    border-radius: 5px;
+    padding:10px;
+    border:2px solid #ccc;
+    font-size: 1.5rem;
+    font-family: "Helvetica";
+
+
+    transform: translate(-50%, -50%);
+
+    h1{
+    	color:#222;
+    }
+
+
+
+    button{
+			width: 80%;
+			height: 60px;
+			font-size: 2rem;
+			text-transform: uppercase;
+			background: none;
+			border: 1px solid white;
+			position: absolute;
+			cursor:pointer;
+			color:#ccc;
+
+			bottom: 20px;
+			left: 50%;
+			transform: translate(-50%);
+    }
+	}
+}
