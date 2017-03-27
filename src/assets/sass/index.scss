@@ -58,3 +58,19 @@
     }
 	}
 }
+
+
+@media (min-width:100px) and (max-width: 720px) {
+	
+	.logo{
+		width:100px;
+		top:10px;
+	}
+
+	#intro .intro-content{
+		width:250px;
+		height:400px;
+		top:55%;
+	}
+
+}
