@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var good_dna = document.querySelector('#dna');
 	var broken_dna = document.querySelector('#dna_single_broken');
 
+	var s2Entrance = document.querySelector('#s2Entrance');
+
 	// Sounds
 
 	var sounds = [];
@@ -62,14 +64,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	parp_exit.addEventListener('animationend', function(){
 		removeFromDom(parp);
-		scene2.emit('moveIn');
 		scene2.setAttribute('visible', 'true');
 	});
 
 	parp_inhibitor_exit.addEventListener('animationend', function(){
-		removeFromDom(parp_inhibitor);
-		scene2.emit('moveIn');
+		hide(parp_inhibitor);
 		scene1.emit('moveOut');
+		scene2.emit('moveIn');
+	});
+
+
+	// Scene 2
+
+	s2Entrance.addEventListener('animationend', function(){
+		hide(scene1);
+		
 	});
 
 
