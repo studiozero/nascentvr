@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var s2Entrance = document.querySelector('#s2Entrance');
 
+	var PIB = document.querySelector('#parp-inhibitor-break');
+
 	// Sounds
 
 	var sounds = [];
@@ -91,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	s2Entrance.addEventListener('animationend', function(){
 		hide(scene1);
 		playVO(vo2);
+		PIB.emit('scene-start');
 	});
 
 

@@ -36,6 +36,9 @@ html
 				a-asset-item#dna_single_model(src="assets/models/dna_single_broken.obj" crossorigin)
 				a-asset-item#dna_single_material(src="assets/models/dna_single_broken.mtl" crossorigin)
 
+				a-asset-item#dna_broken_model(src="assets/models/dna_broken.obj" crossorigin)
+				a-asset-item#dna_broken_material(src="assets/models/dna_broken.mtl" crossorigin)
+
 				img#damage_label(src="assets/images/damage_label.png" crossorigin)
 				img#inhibitor_label(src="assets/images/inhibitor_label.png" crossorigin)
 
@@ -44,7 +47,6 @@ html
 			a-entity#stage
 				
 				a-entity#scene-1(visible="true")
-					a-sound(src="#vo1" autoplay="false")
 					a-animation#scene1move(attribute="position" begin="moveOut" to="-20 0 0")
 					
 					a-entity#parp(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
@@ -65,11 +67,18 @@ html
 					
 					a-entity#dna(visible="false" position="0 0 0" obj-model="obj: #dna_model;mtl: #dna_material" material="shader: flat; color: white;" rotation="0 0 60")
 
+
+				//- Scene 2
+
 				a-entity#scene-2(position="20 0 0" visible="false")
 					a-animation#s2Entrance(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
-					
-					a-entity#dna_single_broken(position="0 0 0" obj-model="obj: #dna_single_model;mtl: #dna_single_material" material="shader: flat; color: white;" rotation="0 0 60")
-						a-image(src="#damage_label" height="1.5" width="2.3" rotation="0 0 -71" position="-0.76 0.44 0.68")
+
+					a-entity#parp-inhibitor-break(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
+						a-animation(begin="scene-start" attribute="position" to="0 0 0" dur="5000" easing="linear")
+						a-animation(attribute="rotation" to="0 360 0" dur="12000" repeat="indefinite" easing="linear")
+						a-animation#parp-inhibitor-break-exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
+
+						a-sphere#inhibitor(position="0.35 0.15 -0.20" color="#16b44b" radius="0.3")
 
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)
