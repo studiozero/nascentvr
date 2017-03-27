@@ -23,6 +23,7 @@ html
 			a-assets
 				
 				audio#vo1(src="assets/sound/parp-1.mp3" autoplay="false")
+				audio#vo2(src="assets/sound/parp-2.mp3" autoplay="false")
 
 				img#background(src="assets/images/background.jpg" crossorigin)
 				img#parp_texture(src="assets/models/parp_tex.png" crossorigin)
@@ -65,7 +66,7 @@ html
 					a-entity#dna(visible="false" position="0 0 0" obj-model="obj: #dna_model;mtl: #dna_material" material="shader: flat; color: white;" rotation="0 0 60")
 
 				a-entity#scene-2(position="20 0 0" visible="false")
-					a-animation#scene2move(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
+					a-animation#s2Entrance(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
 					
 					a-entity#dna_single_broken(position="0 0 0" obj-model="obj: #dna_single_model;mtl: #dna_single_material" material="shader: flat; color: white;" rotation="0 0 60")
 						a-image(src="#damage_label" height="1.5" width="2.3" rotation="0 0 -71" position="-0.76 0.44 0.68")

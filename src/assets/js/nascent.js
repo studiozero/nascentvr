@@ -28,16 +28,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var sounds = [];
 
 	var vo1 = document.querySelector('#vo1');
+	var vo2 = document.querySelector('#vo2');
 
 	sounds.push(vo1);
+	sounds.push(vo2);
+
 
 	// Put a loop to loop through sounds and pause them all.
 
-	vo1.pause();
+	for(i = 0; i < sounds.length; i++){
+		sounds[i].pause();
+	}
 
 
 	start.addEventListener('click', function(){
 		begin();
+		
+
+		for(i = 0; i < sounds.length; i++){
+			sounds[i].play();
+			sounds[i].pause();
+		}
+
 	});
 
 
@@ -78,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	s2Entrance.addEventListener('animationend', function(){
 		hide(scene1);
-		
+		playVO(vo2);
 	});
 
 
