@@ -18,6 +18,22 @@ html
 				p This Mechanism of Action covers poly ADP ribose polymerase (PARP).
 				button#start Begin
 
+		#outro(style="display:none;")
+			.intro-content
+				h1 NM:VR
+				h3 More info about PARP
+				hr
+				ul
+					li
+						a(href="https://www.ncbi.nlm.nih.gov/pubmed/22788767" target="_blank") Role of PARP inhibitors in cancer biology and therapy.
+					li
+						a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4348139" target="_blank") An update on PARP inhibitors for the treatment of cancer
+
+				hr
+
+				| Presented by 
+				a(href="https://nascentmc.com" target="_blank") Nascent Medical
+
 
 		a-scene(visible="false" vr-mode-ui="enabled: false")
 			a-assets
@@ -87,11 +103,5 @@ html
 						a-animation#parp-inhibitor-break-exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
 
 						a-sphere#inhibitor(position="0.35 0.15 -0.20" color="#16b44b" radius="0.3")
-
-				//- Scene 3
-
-				a-entity#scene-3(position="20 0 0" visible="false")
-					a-animation#s3Entrance(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
-
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)

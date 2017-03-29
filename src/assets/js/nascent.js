@@ -113,9 +113,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 
 
-	// Scene 3
+	$('#break_animation').addEventListener('animationstart', function(){
 
-	
+		setTimeout(function(){
+			scene2.emit('moveOut');
+
+			hide(scene2);
+			sceneEl.setAttribute('visible', 'false');
+			sceneEl.setAttribute('vr-mode-ui', 'enabled:false');
+
+			$('#outro').style.display = '';
+		}, 6000);
+
+	});
+
+
 
 
 	var playVO = function(sound){

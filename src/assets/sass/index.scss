@@ -6,7 +6,7 @@
 	top: 25px;
 }
 
-#intro{
+#intro, #outro{
 	height:100%;
 	width:100%;
 	background: url("../images/background.jpg");
@@ -60,6 +60,27 @@
 }
 
 
+#outro{
+	.intro-content{
+		text-align:left;
+		font-size: 1.2rem;
+	}
+	ul{
+		list-style:none;
+		margin:0;
+		padding:0;
+
+		li{
+			margin-bottom:10px;
+		}
+
+	}
+
+	a{
+			color:black;
+		}
+}
+
 @media (min-width:100px) and (max-width: 720px) {
 	
 	.logo{
@@ -67,7 +88,8 @@
 		top:10px;
 	}
 
-	#intro .intro-content{
+	#intro .intro-content, 
+	#outro .intro-content{
 		width:250px;
 		height:400px;
 		top:55%;
