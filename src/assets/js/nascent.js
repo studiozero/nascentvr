@@ -1,3 +1,8 @@
+var $ = function(el){
+	return document.querySelector(el)
+}
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	var start = document.querySelector('#start');
@@ -24,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var s2Entrance = document.querySelector('#s2Entrance');
 
 	var PIB = document.querySelector('#parp-inhibitor-break');
+
+	var s2_damaged = document.querySelector('#s2_dna_single_broken');
+	var s2_forked = $('#dead_dna');
 
 	// Sounds
 
@@ -94,7 +102,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		hide(scene1);
 		playVO(vo2);
 		PIB.emit('scene-start');
+
+		setTimeout(function(){
+			hide(s2_damaged);
+			show(s2_forked);
+			$('#broken_model_2').emit('kill-cell');
+		}, 10000);
+
+
 	});
+
+
+	// Scene 3
+
+	
 
 
 	var playVO = function(sound){

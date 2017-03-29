@@ -4,7 +4,7 @@ html
 	meta(charset='utf-8')
 	title NascentVR
 	meta(name='description', content='')
-	script(src="http://assets.studiozero.xyz/nascent/js/main.js")
+	script(src="assets/js/main.js")
 	link(rel="stylesheet", href="assets/css/main.css")
 
 	body
@@ -22,8 +22,8 @@ html
 		a-scene(visible="false" vr-mode-ui="enabled: false")
 			a-assets
 				
-				audio#vo1(src="http://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false")
-				audio#vo2(src="http://assets.studiozero.xyz/nascent/sound/parp-2.mp3" autoplay="false")
+				audio#vo1(src="http://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false" crossorigin)
+				audio#vo2(src="http://assets.studiozero.xyz/nascent/sound/parp-2.mp3" autoplay="false" crossorigin)
 
 				img#background(src="http://assets.studiozero.xyz/nascent/images/background.jpg" crossorigin)
 				img#parp_texture(src="http://assets.studiozero.xyz/nascent/models/parp_tex.png" crossorigin)
@@ -36,8 +36,7 @@ html
 				a-asset-item#dna_single_model(src="http://assets.studiozero.xyz/nascent/models/dna_single_broken.obj" crossorigin)
 				a-asset-item#dna_single_material(src="http://assets.studiozero.xyz/nascent/models/dna_single_broken.mtl" crossorigin)
 
-				a-asset-item#dna_broken_model(src="http://assets.studiozero.xyz/nascent/models/dna_broken.obj" crossorigin)
-				a-asset-item#dna_broken_material(src="http://assets.studiozero.xyz/nascent/models/dna_broken.mtl" crossorigin)
+				a-asset-item#dna_broken_model(src="assets/models/dna_broken.dae" crossorigin)
 
 				img#damage_label(src="http://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
 				img#inhibitor_label(src="http://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
@@ -72,6 +71,15 @@ html
 
 				a-entity#scene-2(position="20 0 0" visible="false")
 					a-animation#s2Entrance(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
+					a-animation#s2Exit(attribute="position" begin="moveOut" to="-20 0 0" easing="linear")
+
+					a-entity#s2_dna_single_broken(position="0 0 0" obj-model="obj: #dna_single_model;mtl: #dna_single_material" material="shader: flat; color: white;" rotation="0 0 60")
+
+					a-entity#dead_dna(visible="false")
+						a-entity#broken_model_1(collada-model="#dna_broken_model" rotation="0 0 60")
+
+						a-entity#broken_model_2(collada-model="#dna_broken_model" position="-0.05 0.25 0.09" rotation="32 0 -120")
+							a-animation#break_animation(begin="kill-cell" dur="8000" attribute="position" to="4 -2 0.10" easing="linear")
 
 					a-entity#parp-inhibitor-break(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
 						a-animation(begin="scene-start" attribute="position" to="0 0 0" dur="5000" easing="linear")
@@ -79,6 +87,11 @@ html
 						a-animation#parp-inhibitor-break-exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
 
 						a-sphere#inhibitor(position="0.35 0.15 -0.20" color="#16b44b" radius="0.3")
+
+				//- Scene 3
+
+				a-entity#scene-3(position="20 0 0" visible="false")
+					a-animation#s3Entrance(attribute="position" begin="moveIn" to="0 0 0" easing="linear")
 
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)
