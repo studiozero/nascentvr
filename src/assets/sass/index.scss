@@ -42,6 +42,7 @@
 
 
     button{
+    	display: none;
 			width: 80%;
 			height: 60px;
 			font-size: 2rem;
@@ -55,6 +56,14 @@
 			bottom: 20px;
 			left: 50%;
 			transform: translate(-50%);
+    }
+
+    progress{
+    	position:absolute;
+    	bottom:20px;
+    	transform: translate(-50%);
+    	width:80%;
+    	height:60px;
     }
 	}
 }

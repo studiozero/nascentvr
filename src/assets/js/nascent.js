@@ -5,7 +5,26 @@ var $ = function(el){
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-	var assets = document.querySelector('a-assets');
+	// Asset loaded func
+	var assetLoaded = function(event){
+		loader.value = loader.value += prog_steps;
+		console.log(loader.value);
+		if(loader.value > 99){
+			removeFromDom(loader);
+			start.style.display = 'block';
+		}
+	}
+
+
+	var assets = [];
+	var asset_items = document.querySelectorAll('a-asset-item');
+	var loader = document.querySelector('progress');
+	var prog_steps = 100 / asset_items.length;
+
+	for(a = 0; a < asset_items.length; a++){
+		asset_items[a].addEventListener('loaded', assetLoaded);
+		console.log(assets)
+	}
 
 	var start = document.querySelector('#start');
 	var intro = document.querySelector('#intro');
@@ -35,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var s2_damaged = document.querySelector('#s2_dna_single_broken');
 	var s2_forked = $('#dead_dna');
 
+
 	// Sounds
 
 	var sounds = [];
@@ -51,10 +71,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	for(i = 0; i < sounds.length; i++){
 		sounds[i].pause();
 	}
-
-	assets.addEventListener('loaded', function(){
-		console.log('assets loaded')
-	});
 
 	start.addEventListener('click', function(){
 		begin();
