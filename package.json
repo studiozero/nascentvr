@@ -6,7 +6,7 @@
   "author": "Shaun Dunne <shaun@studiozero.co>",
   "license": "MIT",
   "scripts": {
-    "setup": "mkdir dist dist/assets dist/assets/js dist/assets/css && run-s build:*",
+    "setup": "mkdirp dist dist/assets dist/assets/js dist/assets/css && run-s build:*",
     "start": "run-p start:budo watch:* & wait",
     "start:budo": "budo src/assets/js/main.js:dist/assets/js/main.js --dir ./dist/ --serve assets/js/main.js --live --verbose --port 3000",
     "prebuild": "rimraf dist/assts/{css/*,js/*,images/*}",
@@ -24,7 +24,8 @@
     "deploy": "run-s build deploy:upload"
   },
   "dependencies": {
-    "aframe": "^0.5.0"
+    "aframe": "^0.5.0",
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
     "aframe-orbit-controls-component": "^1.0.0",

@@ -5,6 +5,8 @@ var $ = function(el){
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
+	var assets = document.querySelector('a-assets');
+
 	var start = document.querySelector('#start');
 	var intro = document.querySelector('#intro');
 
@@ -50,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		sounds[i].pause();
 	}
 
+	assets.addEventListener('loaded', function(){
+		console.log('assets loaded')
+	});
 
 	start.addEventListener('click', function(){
 		begin();
