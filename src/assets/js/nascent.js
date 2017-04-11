@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 	var assets = [];
+	var vr_active = false;
 	var asset_items = document.querySelectorAll('a-asset-item');
 	var loader = document.querySelector('progress');
 	var prog_steps = 100 / asset_items.length;
