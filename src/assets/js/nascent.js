@@ -23,12 +23,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var vr_active = false;
 	var asset_items = document.querySelectorAll('a-asset-item');
 	var loader = document.querySelector('progress');
-	var prog_steps = 100 / asset_items.length;
 
 	for(a = 0; a < asset_items.length; a++){
 		asset_items[a].addEventListener('loaded', assetLoaded);
-		console.log(assets)
+		console.log(asset_items)
 	}
+
+	var prog_steps = 100 / asset_items.length;
 
 	var intro = $('#intro');
 
