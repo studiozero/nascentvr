@@ -5,51 +5,63 @@ html
 	title NascentVR
 	meta(name='description', content='')
 	script(src="assets/js/main.js")
+	link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+	link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css")
 	link(rel="stylesheet", href="assets/css/main.css")
 
 	body
-		img(class="logo" src="http://assets.studiozero.xyz/nascent/images/logo.png")
+		section#intro.hero.is-info.is-fullheight
+			.hero-body
+				.container.has-text-centered
+					h1.title Nascent Medical VR
+					h2.subtitle PARP Mecahnism of Action Demo
 
-		#intro
-			
-			.intro-content
-				h1 Nascent Medical VR
-				p This is a demo of the Nascent VR MoA.
-				p This Mechanism of Action covers poly ADP ribose polymerase (PARP).
-				
-				ul
-					li.mobile
-						.icon
-						.title Magic Window
-					li.desktop
-						.icon
-						.title Browser Experience
-					li.webvr
-						.icon
-						.title WebVR Experience
+					.wrap
+						.columns
+							.column
+								a.enter-mobile(href="#")
+									.icon.is-large
+										i.fa.fa-mobile
+										p Mobile
+							.column
+								a.enter-desktop(href="#")
+									.icon.is-large
+										i.fa.fa-desktop
+							.column
+								a.enter-vr(href="#")
+									img(src="assets/images/webvr.png")
+									|	WebVR
 
+						progress(value="0" max="100")
 
-				progress(value="0" max="100")
+			.hero-foot
+				.container
+					.tabs.is-centered
+						ul
+							li
+								a(href="http://www.studiozero.co")
+									img(style="width:200px;" src="http://assets.studiozero.xyz/made_by.svg")
+							li with
+							li
+								a(href="https://nascentmc.com")
+									img(style="width:100px;" src="http://assets.studiozero.xyz/nascent/images/logo.png")
 
-				.made-by
+		#outro.hero.is-info.is-fullheight(style="display:none;")
+			.hero-body
+				.container.has-text-centered
+					h1.title Nascent Medical VR
+					h2.subtitle PARP Mecahnism of Action Demo
 					
-
-
-		#outro(style="display:none;")
-			.intro-content
-				h1 NM:VR
-				h3 More info about PARP
-				hr
-				ul
-					li
-						a(href="https://www.ncbi.nlm.nih.gov/pubmed/22788767" target="_blank") Role of PARP inhibitors in cancer biology and therapy.
-					li
-						a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4348139" target="_blank") An update on PARP inhibitors for the treatment of cancer
-
-				hr
-
-				| Presented by 
-				a(href="https://nascentmc.com" target="_blank") Nascent Medical
+					hr
+					
+					ul
+						li
+							a(href="https://www.ncbi.nlm.nih.gov/pubmed/22788767" target="_blank") Role of PARP inhibitors in cancer biology and therapy.
+						li
+							a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4348139" target="_blank") An update on PARP inhibitors for the treatment of cancer
+					hr
+					| Presented by 
+					a(href="https://nascentmc.com" target="_blank") Nascent Medical
 
 
 		a-scene(visible="false" vr-mode-ui="enabled: false")
@@ -120,5 +132,10 @@ html
 						a-animation#parp-inhibitor-break-exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
 
 						a-sphere#inhibitor(position="0.35 0.15 -0.20" color="#16b44b" radius="0.3")
+
+				a-entity#remove-headset(position="0 0 0" visible="false")
+					a-image(src="assets/images/remove.png" position="0 0 0" height="1" width="2" opacity="0")
+						a-animation#remove-headset(attribute="opacity" to="1")
+
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)

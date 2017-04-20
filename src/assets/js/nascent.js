@@ -11,10 +11,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		console.log(loader.value);
 		if(loader.value > 99){
 			removeFromDom(loader);
-			start.style.display = 'block';
 		}
 	}
 
+	// Enter Buttons
+	var enter_webvr = $('.enter-vr');
+	var enter_desktop = $('.enter-desktop');
+	var enter_mobile = $('.enter-mobile');
 
 	var assets = [];
 	var vr_active = false;
@@ -27,41 +30,43 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		console.log(assets)
 	}
 
-	var start = document.querySelector('#start');
-	var intro = document.querySelector('#intro');
+	var intro = $('#intro');
 
-	var camera = document.querySelector('#camera');
-	var sceneEl = document.querySelector('a-scene');
+	var camera = $('#camera');
+	var sceneEl = $('a-scene');
 
-	var stage = document.querySelector('#stage');
+	var stage = $('#stage');
 
-	var scene1 = document.querySelector('#scene-1');
-	var scene2 = document.querySelector('#scene-2');
+	var scene1 = $('#scene-1');
+	var scene2 = $('#scene-2');
 
-	var parp = document.querySelector('#parp');
-	var parp_exit = document.querySelector('#parp_exit');
+	var parp = $('#parp');
+	var parp_exit = $('#parp_exit');
 
 
-	var parp_inhibitor = document.querySelector('#parp-inhibitor');
-	var parp_inhibitor_exit = document.querySelector('#parp_inhibitor_exit');
+	var parp_inhibitor = $('#parp-inhibitor');
+	var parp_inhibitor_exit = $('#parp_inhibitor_exit');
 
-	var good_dna = document.querySelector('#dna');
-	var broken_dna = document.querySelector('#dna_single_broken');
+	var good_dna = $('#dna');
+	var broken_dna = $('#dna_single_broken');
 
-	var s2Entrance = document.querySelector('#s2Entrance');
+	var s2Entrance = $('#s2Entrance');
 
-	var PIB = document.querySelector('#parp-inhibitor-break');
+	var PIB = $('#parp-inhibitor-break');
 
-	var s2_damaged = document.querySelector('#s2_dna_single_broken');
+	var s2_damaged = $('#s2_dna_single_broken');
 	var s2_forked = $('#dead_dna');
+
+	var remove_headset = $('#remove-headset');
+	var outro = $('#outro');
 
 
 	// Sounds
 
 	var sounds = [];
 
-	var vo1 = document.querySelector('#vo1');
-	var vo2 = document.querySelector('#vo2');
+	var vo1 = $('#vo1');
+	var vo2 = $('#vo2');
 
 	sounds.push(vo1);
 	sounds.push(vo2);
@@ -73,15 +78,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		sounds[i].pause();
 	}
 
-	start.addEventListener('click', function(){
-		begin();
-		
-
+	var playPause = function(){
 		for(i = 0; i < sounds.length; i++){
 			sounds[i].play();
 			sounds[i].pause();
-		}
+		}		
+	}
 
+	enter_desktop.addEventListener('click', function(event){
+		event.preventDefault();
+		playPause();
+		begin();
+	});
+
+	enter_mobile.addEventListener('click', function(event){
+		event.preventDefault();
+		playPause();
+		begin();
+	});
+
+	enter_webvr.addEventListener('click', function(event){
+		event.preventDefault();
+		playPause();
+		sceneEl.enterVR();
+		begin();
+	});
+
+	sceneEl.addEventListener('enter-vr', function () {
+  	console.log("ENTERED VR");
+  	vr_active = true;
+	});
+
+	sceneEl.addEventListener('exit-vr', function () {
+  	console.log("EXITED VR");
+  	vr_active = false;
 	});
 
 
@@ -130,8 +160,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			show(s2_forked);
 			$('#broken_model_2').emit('kill-cell');
 		}, 10000);
-
-
 	});
 
 
@@ -139,18 +167,37 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		setTimeout(function(){
 			scene2.emit('moveOut');
-
 			hide(scene2);
-			sceneEl.setAttribute('visible', 'false');
-			sceneEl.setAttribute('vr-mode-ui', 'enabled:false');
-
-			$('#outro').style.display = '';
+			initOutro();
 		}, 6000);
 
 	});
 
+	var initOutro = function(){
 
+		// If we are in VR mode - show remove headset screen - wait - then exit VR mode
 
+		if(vr_active){
+			show_remove();
+		} else {
+			show_remove();
+		}
+
+	}
+
+	var show_remove = function(){
+		remove_headset.setAttribute('visible', true);
+		setTimeout(function(){
+			sceneEl.exitVR();
+			runEnd();
+		}, 3000)
+	}
+
+	var runEnd = function(){
+		sceneEl.setAttribute('visible', 'false');
+		sceneEl.setAttribute('vr-mode-ui', 'enabled:false');
+		outro.style.display='flex';
+	}
 
 	var playVO = function(sound){
 		setTimeout(function(){

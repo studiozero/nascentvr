@@ -2,6 +2,11 @@
 	box-sizing:border-box;
 }
 
+.wrap{
+	width:80%;
+	max-width:1400px;
+	margin:auto;
+}
 
 .logo{
 	position: absolute;
@@ -11,118 +16,48 @@
 	top: 25px;
 }
 
-#intro, #outro{
-	height:100%;
-	width:100%;
+.tabs a{
+	border:none;
+}
+
+progress[value] {
+    /* Get rid of the default appearance */
+    appearance: none;
+    
+    /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+    border: none;
+    
+    /* Add dimensions */
+    width: 200px; height: 20px;
+    
+  /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+    background-color: whiteSmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+    
+    position: relative;
+    margin: 0 0 1.5em; 
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: whiteSmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+    position: relative;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    background-color:#31b473;
+}
+
+#intro, #outro, #removeHeadset{
 	background: url("../images/background.jpg");
 	background-size:cover;
-	position:absolute;
 	z-index:99;
-
-
 	color:#ccc;
-
-
-	.intro-content{
-    background: rgba(0,0,0,0.4);
-    text-align: center;
-    width:100%;
-    height:100%;
-    padding:10px;
-    font-size: 1.5rem;
-    font-family: "Helvetica";
-
-
-    // transform: translate(-50%, -50%);
-
-    h1{
-    	color:#222;
-    }
-
-    ul{
-
-    	li{
-    		display: inline-block;
-    		text-align: center;
-    		width:33.3333%;
-
-    		transition: all (0.8);
-
-    		&:hover{
-    			cursor: pointer;
-
-
-    			&~li{opacity:0.2;}
-    		}
-
-    		.title{
-    			font-size: 1rem;
-    			text-transform: uppercase;
-    			color:white;
-    			font-weight: 400;
-    		}
-
-
-    		.icon{
-    			margin:auto;
-    			width:100px;
-    			height:100px;
-    			background-size:100%;
-    			background-image:url('../images/webvr.png');
-    		}
-    	}
-    }
-
-
-
-    button{
-    	display: none;
-			width: 80%;
-			height: 60px;
-			font-size: 2rem;
-			text-transform: uppercase;
-			background: none;
-			border: 1px solid white;
-			position: absolute;
-			cursor:pointer;
-			color:#ccc;
-
-			bottom: 20px;
-			left: 50%;
-			transform: translate(-50%);
-    }
-
-    progress{
-    	position:absolute;
-    	bottom:20px;
-    	transform: translate(-50%);
-    	width:80%;
-    	height:60px;
-    }
-	}
 }
 
-
-#outro{
-	.intro-content{
-		text-align:left;
-		font-size: 1.2rem;
-	}
-	ul{
-		list-style:none;
-		margin:0;
-		padding:0;
-
-		li{
-			margin-bottom:10px;
-		}
-
-	}
-
-	a{
-			color:black;
-		}
-}
 
 @media (min-width:100px) and (max-width: 720px) {
 	
