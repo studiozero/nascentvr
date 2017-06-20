@@ -5,33 +5,56 @@ var $ = function(el){
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
+	var progress = 0;
+	var loaded = 0;
+	var asset_items = document.querySelector('a-assets').children;
+	var total =  asset_items.length;
+	var loading = document.querySelector('.loading');
+	var loader = document.querySelector('.progress');
+
 	// Asset loaded func
 	var assetLoaded = function(event){
-		loader.value = loader.value += prog_steps;
-		console.log(loader.value);
-		if(loader.value > 99){
-			removeFromDom(loader);
+		loaded = loaded + 1;
+		progress = Math.round( (loaded / total * 100) ) + '%';
+		loader.innerHTML = progress;
+		if(progress === '100%'){
+			removeFromDom(loading);
+			showStartScreen();
 		}
 	}
 
+	var showStartScreen = function(){
+		enter.style.display = 'block';
+	}
+
 	// Enter Buttons
+	var enter = $('.enter-buttons');
 	var enter_webvr = $('.enter-vr');
 	var enter_desktop = $('.enter-desktop');
-	var enter_mobile = $('.enter-mobile');
+	var enter_mobile = $('.enter-mw');
 
 	var assets = [];
 	var vr_active = false;
-	var asset_items = document.querySelectorAll('a-asset-item');
-	var loader = document.querySelector('progress');
 
-	for(a = 0; a < asset_items.length; a++){
-		asset_items[a].addEventListener('loaded', assetLoaded);
-		console.log(asset_items)
+	for(a = 0; a < total; a++){
+		var type = asset_items[a].tagName;
+
+		switch(type){
+			case "IMG":
+				asset_items[a].addEventListener('load', assetLoaded);
+				break;
+
+			case "AUDIO":
+				asset_items[a].addEventListener('canplay', assetLoaded);
+				break;
+
+			case "A-ASSET-ITEM":
+				asset_items[a].addEventListener('loaded', assetLoaded);
+				break;
+		}
 	}
 
-	var prog_steps = 100 / asset_items.length;
-
-	var intro = $('#intro');
+	var intro = $('.intro');
 
 	var camera = $('#camera');
 	var sceneEl = $('a-scene');

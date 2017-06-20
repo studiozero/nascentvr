@@ -1,13 +1,3 @@
-*{
-	box-sizing:border-box;
-}
-
-.wrap{
-	width:80%;
-	max-width:1400px;
-	margin:auto;
-}
-
 .logo{
 	position: absolute;
 	z-index: 100;
@@ -51,26 +41,31 @@ progress[value]::-webkit-progress-value {
     background-color:#31b473;
 }
 
-#intro, #outro, #removeHeadset{
+#outro, #removeHeadset{
+	height:100%;
 	background: url("../images/background.jpg");
 	background-size:cover;
 	z-index:99;
 	color:#ccc;
+	justify-content:center;
+	align-items:center;
 }
 
+#outro .container{
+	padding: 50px;
+	color:white;
+	text-align:center;
+}
 
-@media (min-width:100px) and (max-width: 720px) {
-	
-	.logo{
-		width:100px;
-		top:10px;
+.read-more-list{
+	list-style:none;
+
+	a{
+		color: white;
+		font-size: 1.4rem;
 	}
 
-	#intro .intro-content, 
-	#outro .intro-content{
-		width:250px;
-		height:400px;
-		top:55%;
+	li{
+		margin-bottom:25px;
 	}
-
 }

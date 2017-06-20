@@ -2,90 +2,200 @@ doctype html
 html
 	head
 	meta(charset='utf-8')
+	meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
 	title NascentVR
 	meta(name='description', content='')
 	script(src="assets/js/main.js")
-	link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
-	link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css")
 	link(rel="stylesheet", href="assets/css/main.css")
 
+	style(type='text/css').
+  
+		.intro{
+			background-color: rgba(23, 23, 23, 0.9);
+			display: flex;
+			top: 0;
+			left: 0;
+			right: 0;
+			left: 0;
+			z-index: 1000;
+			width: 100vw;
+			height: 100vh;
+			color: #FFF;
+			align-items: center;
+			justify-content: center;
+			font-family: Montserrat, sans-serif;
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.splash-title{
+			margin-bottom:0;
+		}
+
+		.subtitle{
+			font-weight:100;
+		}
+
+		button{
+			border: 2px solid #fff;
+			border-radius: 0;
+			background: transparent;
+			padding: .3em .6em;
+			font-size: 2rem;
+			font-size: 3.22vmin;
+			color: #fff;
+			pointer-events: auto;
+		}
+
+		button:hover{
+			cursor:pointer;
+		}
+
+		.enter-btn{
+			display: block;
+			border-color: #fff;
+			margin: 0 auto 1.05em;
+			text-align: left;
+			color: #fff;
+			width: 580px;
+			padding: 0;
+			background: no-repeat 100% 0;
+			background-size: contain;
+			position: relative;
+		}
+
+		.enter-btn h3{
+			padding: .23em .5em;
+			display: inline-block;
+			width: 75%;
+			border-right: 2px solid #fff;
+			-webkit-transition: border .2s;
+			transition: border .2s;
+		}
+
+		.enter-btn h3 svg{
+			position: absolute;
+			height: 65px;
+			width: 70px;
+			position: absolute;
+			right:12px;
+		}
+
+		.heading-3{
+			font-family: HelveticaNeueLTStd-Th,sans-serif;
+			font-style: normal;
+			padding: 0;
+			margin: 0;
+			line-height: 1.3em;
+			letter-spacing: -.03em;
+			font-weight: 400;
+			font-size: 3rem;
+		}
+
+		
+		@media screen and (max-width: 600px) {
+			
+			.enter-btn{
+				width: 90%;
+			}
+			
+			.enter-btn h3{
+				border:none;
+				width: 100%;
+				text-align: center;
+				padding: 0.5rem 0;
+			}
+
+			.heading-3{
+				font-size: 2rem;
+			}
+
+			.enter-btn h3 svg{
+				display: none
+			}
+
+			.hidden-small{
+				display: none
+			}
+		}
+
+
 	body
-		section#intro.hero.is-info.is-fullheight
-			.hero-body
-				.container.has-text-centered
-					h1.title Nascent Medical VR
-					h2.subtitle PARP Mecahnism of Action Demo
+		
+		.intro()
+			
+			h1.splash-title Nascent VR
+			h3.subtitle WebVR Mechanism of Action
 
-					.wrap
-						h2 Please choose the experience
-						.columns
-							.column
-								a.enter-mobile(href="#")
-									img(src="assets/images/mobile.png")
-									p Mobile
-							.column
-								a.enter-desktop(href="#")
-									img(src="assets/images/desktop.png")
-									p Desktop
-							.column
-								a.enter-vr(href="#")
-									img(src="assets/images/webvr.png")
-									p WebVR
-					progress(value="0" max="100")
+			
+			.enter-buttons(style="display:none;")
+				button.enter-btn.hidden-small.enter-desktop
+					h3.heading-3 Desktop
+						svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 467.211 467.211')
+							g(fill='#FFF')
+								path(d='M413.917 96.775H53.295c-6.37 0-11.55 5.18-11.55 11.55v213.182c0 6.37 5.18 11.55 11.55 11.55h360.622c6.368 0 11.55-5.18 11.55-11.55v-213.18c0-6.37-5.182-11.552-11.55-11.552zm1.55 224.732c0 .855-.695 1.55-1.55 1.55H53.295c-.855 0-1.55-.696-1.55-1.55v-213.18c0-.856.694-1.55 1.55-1.55h360.622c.854 0 1.55.695 1.55 1.55v213.18z')
+								path(d='M459.71 340.558h-11.743V102.843c0-15.752-12.815-28.568-28.568-28.568H47.81c-15.753 0-28.568 12.815-28.568 28.568v237.714H7.5c-4.143 0-7.5 3.358-7.5 7.5v20.605c0 13.384 10.89 24.272 24.272 24.272h418.666c13.384 0 24.272-10.89 24.272-24.272v-20.605c0-4.14-3.356-7.5-7.5-7.5zM34.245 102.843c0-7.48 6.087-13.568 13.568-13.568H419.4c7.48 0 13.567 6.086 13.567 13.568v237.714H34.244V102.843zm177.36 252.715h44v3.922c0 1.755-1.427 3.184-3.183 3.184H214.79c-1.756 0-3.184-1.428-3.184-3.184v-3.922zm240.608 13.105c0 5.113-4.16 9.272-9.272 9.272H24.275c-5.113 0-9.272-4.16-9.272-9.272v-13.105h186.606v3.922c0 7.27 5.915 13.184 13.185 13.184h37.634c7.27 0 13.184-5.914 13.184-13.184v-3.922h186.605v13.105z')
 
-			.hero-foot
-				.container
-					.tabs.is-centered
-						ul
-							li
-								a(href="http://www.studiozero.co")
-									img(style="width:200px;" src="http://assets.studiozero.xyz/made_by.svg")
-							li with
-							li
-								a(href="https://nascentmc.com")
-									img(style="width:100px;" src="http://assets.studiozero.xyz/nascent/images/logo.png")
+				button.enter-btn.enter-mw
+					h3.heading-3 Magic Window
+						svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 35 35')
+							path(fill='#FFF', d='M25.302 0H9.698c-1.3 0-2.364 1.063-2.364 2.364v30.27C7.334 33.937 8.398 35 9.698 35h15.604c1.3 0 2.364-1.062 2.364-2.364V2.364c0-1.3-1.064-2.364-2.364-2.364zM15.004 1.704h4.992c.158 0 .286.128.286.287 0 .16-.128.287-.286.287h-4.992c-.158 0-.286-.128-.286-.286 0-.158.128-.286.286-.286zM17.5 33.818c-.653 0-1.182-.53-1.182-1.183s.53-1.182 1.182-1.182 1.182.528 1.182 1.182-.53 1.183-1.182 1.183zm8.52-3.193H8.98V3.75h17.04v26.875z')
 
-		#outro.hero.is-info.is-fullheight(style="display:none;")
-			.hero-body
-				.container.has-text-centered
-					h1.title Nascent Medical VR
-					h2.subtitle PARP Mecahnism of Action Demo
-					
-					hr
-					
-					ul
-						li
-							a(href="https://www.ncbi.nlm.nih.gov/pubmed/22788767" target="_blank") Role of PARP inhibitors in cancer biology and therapy.
-						li
-							a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4348139" target="_blank") An update on PARP inhibitors for the treatment of cancer
-					hr
-					| Presented by 
-					a(href="https://nascentmc.com" target="_blank") Nascent Medical
+				button.enter-btn.enter-vr
+					h3.heading-3 Enter VR
+				
+						svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 512 512')
+							path(fill='#FFF', d='M495.195 136.123H461.72V81.225c0-9.28-7.525-16.805-16.806-16.805H67.087c-9.28 0-16.805 7.524-16.805 16.805v54.897H16.805C7.525 136.122 0 143.647 0 152.928v277.847c0 9.28 7.524 16.805 16.805 16.805h187.023c8.48 0 15.63-6.318 16.677-14.734l9.383-75.525c1.633-13.15 12.86-23.062 26.112-23.062 13.25 0 24.48 9.917 26.112 23.068l9.383 75.526c1.046 8.416 8.196 14.734 16.677 14.734h187.02c9.282 0 16.806-7.524 16.806-16.805V152.93c.002-9.28-7.522-16.805-16.803-16.805zM83.892 98.03h344.216v38.093H83.892V98.03zM478.39 413.97H323.018l-7.552-60.793c-3.72-29.95-29.287-52.534-59.466-52.534s-55.745 22.585-59.466 52.535l-7.552 60.79H33.61V169.734h444.78V413.97z')
+							path(fill='#FFF', d='M130.595 187.29c-44.48 0-80.665 36.185-80.665 80.664 0 44.48 36.186 80.665 80.665 80.665s80.665-36.19 80.665-80.67-36.185-80.666-80.665-80.666zm0 127.72c-25.946 0-47.055-21.11-47.055-47.056s21.11-47.055 47.055-47.055c25.946 0 47.055 21.103 47.055 47.05s-21.108 47.054-47.055 47.054zm250.81-127.72c-44.48 0-80.665 36.185-80.665 80.664 0 44.48 36.186 80.665 80.665 80.665s80.665-36.19 80.665-80.67-36.186-80.666-80.665-80.666zm0 127.72c-25.946 0-47.055-21.11-47.055-47.056s21.11-47.055 47.055-47.055 47.055 21.103 47.055 47.05-21.11 47.054-47.055 47.054z')
+
+			h2.loading
+				| Loading 
+				span.progress 0% 
+		
+			a.made-by(style='position: absolute;width: 130px; bottom:25px; left: 25px;', href='http://studiozero.co')
+				img(src='https://assets.studiozero.xyz/made_by.svg')
+
+
+		#outro(style="display:none;")
+			.container
+				h1.title Nascent Medical VR
+				h2.subtitle PARP Mecahnism of Action Demo
+				
+				hr
+				
+				ul.read-more-list
+					li
+						a(href="https://www.ncbi.nlm.nih.gov/pubmed/22788767" target="_blank") Role of PARP inhibitors in cancer biology and therapy.
+					li
+						a(href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4348139" target="_blank") An update on PARP inhibitors for the treatment of cancer
+				hr
+				| Presented by 
+				a(href="https://nascentmc.com" target="_blank") Nascent Medical
 
 
 		a-scene(visible="false" vr-mode-ui="enabled: false")
 			a-assets(timeout="15000")
 				
-				audio#vo1(src="http://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false" crossorigin)
-				audio#vo2(src="http://assets.studiozero.xyz/nascent/sound/parp-2.mp3" autoplay="false" crossorigin)
+				audio#vo1(src="https://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false" crossorigin)
+				audio#vo2(src="https://assets.studiozero.xyz/nascent/sound/parp-2.mp3" autoplay="false" crossorigin)
 
-				img#background(src="http://assets.studiozero.xyz/nascent/images/background.jpg" crossorigin)
-				img#parp_texture(src="http://assets.studiozero.xyz/nascent/models/parp_tex.png" crossorigin)
+				img#background(src="https://assets.studiozero.xyz/nascent/images/background.jpg" crossorigin)
+				img#parp_texture(src="https://assets.studiozero.xyz/nascent/models/parp_tex.png" crossorigin)
 
-				a-asset-item#parp_model(src="http://assets.studiozero.xyz/nascent/models/parp_uv.obj" crossorigin)
-				a-asset-item#parp_mat(src="http://assets.studiozero.xyz/nascent/models/parp_uv.mtl" crossorigin)
-				a-asset-item#dna_model(src="http://assets.studiozero.xyz/nascent/models/dna.obj" crossorigin)
-				a-asset-item#dna_material(src="http://assets.studiozero.xyz/nascent/models/dna.mtl" crossorigin)
+				a-asset-item#parp_model(src="https://assets.studiozero.xyz/nascent/models/parp_uv.obj" crossorigin)
+				a-asset-item#parp_mat(src="https://assets.studiozero.xyz/nascent/models/parp_uv.mtl" crossorigin)
+				a-asset-item#dna_model(src="https://assets.studiozero.xyz/nascent/models/dna.obj" crossorigin)
+				a-asset-item#dna_material(src="https://assets.studiozero.xyz/nascent/models/dna.mtl" crossorigin)
 
-				a-asset-item#dna_single_model(src="http://assets.studiozero.xyz/nascent/models/dna_single_broken.obj" crossorigin)
-				a-asset-item#dna_single_material(src="http://assets.studiozero.xyz/nascent/models/dna_single_broken.mtl" crossorigin)
+				a-asset-item#dna_single_model(src="https://assets.studiozero.xyz/nascent/models/dna_single_broken.obj" crossorigin)
+				a-asset-item#dna_single_material(src="https://assets.studiozero.xyz/nascent/models/dna_single_broken.mtl" crossorigin)
 
 				a-asset-item#dna_broken_model(src="assets/models/dna_broken.dae" crossorigin)
 
-				img#damage_label(src="http://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
-				img#inhibitor_label(src="http://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
+				img#damage_label(src="https://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
+				img#inhibitor_label(src="https://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
 
-			a-sky(src="#background")
+			a-sky(color="#4f6a7d")
 
 			a-entity#stage
 				
