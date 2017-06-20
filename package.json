@@ -20,7 +20,7 @@
     "watch:html": "onchange \"src/*.pug\" -- npm run build:html",
     "watch:css": "onchange \"src/assets/sass\" -- npm run build:css",
     "watch:images": "onchange \"src/assets/images\" -- npm run build:images",
-    "deploy:upload": "surge -p dist -d nascentvr.surge.sh",
+    "deploy:upload": "surge -p dist -d https://nascentvr.surge.sh",
     "deploy": "run-s build deploy:upload"
   },
   "dependencies": {
