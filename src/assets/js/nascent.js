@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var total =  asset_items.length;
 	var loading = document.querySelector('.loading');
 	var loader = document.querySelector('.progress');
+	var isChriOS = navigator.userAgent.match('CriOS');
+
+
 
 	// Asset loaded func
 	var assetLoaded = function(event){
@@ -25,6 +28,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var showStartScreen = function(){
 		enter.style.display = 'block';
+
+		if(navigator.userAgent.match('CriOS')){
+			hide(enter_webvr);
+		}
+	
 	}
 
 	// Enter Buttons
@@ -145,7 +153,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		playVO(vo1);
 
 		sceneEl.setAttribute('visible', 'true');
-		sceneEl.setAttribute('vr-mode-ui', 'enabled:true');
+
+		if(!isChriOS){
+			sceneEl.setAttribute('vr-mode-ui', 'enabled:true');
+		}
 
 		parp.emit('scene-start');
 		parp_inhibitor.emit('scene-start');
