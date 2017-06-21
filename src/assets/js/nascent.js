@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Asset loaded func
 	var assetLoaded = function(event){
+		console.log(event);
 		loaded = loaded + 1;
 		progress = Math.round( (loaded / total * 100) ) + '%';
 		loader.innerHTML = progress;
@@ -49,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		switch(type){
 			case "IMG":
-				asset_items[a].addEventListener('load', assetLoaded);
+				//asset_items[a].addEventListener('load', assetLoaded);
+				asset_items[a].onload = assetLoaded;
 				break;
 
 			case "AUDIO":
