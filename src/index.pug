@@ -1,3 +1,4 @@
+
 doctype html
 html
 	head
@@ -249,3 +250,12 @@ html
 
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)
+
+			script.
+				(function(s,t,u,d,i,o,z){s['GoogleAnalyticsObject']=i;s[i]=s[i]||function(){
+				(s[i].q=s[i].q||[]).push(arguments)},s[i].l=1*new Date();o=t.createElement(u),
+				z=t.getElementsByTagName(u)[0];o.async=1;o.src=d;z.parentNode.insertBefore(o,z)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+				ga('create', 'UA-90214138-5', 'auto');
+				ga('send', 'pageview');
