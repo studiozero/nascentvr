@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Asset loaded func
 	var assetLoaded = function(event){
-		console.log(event);
+		console.log(event.target);
 		loaded = loaded + 1;
 		progress = Math.round( (loaded / total * 100) ) + '%';
 		loader.innerHTML = progress;
@@ -46,12 +46,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var vr_active = false;
 
 	for(a = 0; a < total; a++){
+		
 		var type = asset_items[a].tagName;
+
+		console.log(type)
 
 		switch(type){
 			case "IMG":
-				//asset_items[a].addEventListener('load', assetLoaded);
-				asset_items[a].onload = assetLoaded;
+				asset_items[a].addEventListener('load', assetLoaded);
 				break;
 
 			case "AUDIO":

@@ -6,6 +6,14 @@ html
 	meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
 	title NascentVR
 	meta(name='description', content='')
+	script.
+		(function(s,t,u,d,i,o,z){s['GoogleAnalyticsObject']=i;s[i]=s[i]||function(){
+			(s[i].q=s[i].q||[]).push(arguments)},s[i].l=1*new Date();o=t.createElement(u),
+			z=t.getElementsByTagName(u)[0];o.async=1;o.src=d;z.parentNode.insertBefore(o,z)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-90214138-5', 'auto');
+			ga('send', 'pageview');
 	script(src="assets/js/main.js")
 	link(rel="stylesheet", href="assets/css/main.css")
 
@@ -183,6 +191,8 @@ html
 
 				img#background(src="https://assets.studiozero.xyz/nascent/images/background.jpg" crossorigin)
 				img#parp_texture(src="https://assets.studiozero.xyz/nascent/models/parp_tex.png" crossorigin)
+				img#damage_label(src="https://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
+				img#inhibitor_label(src="https://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
 
 				a-asset-item#parp_model(src="https://assets.studiozero.xyz/nascent/models/parp_uv.obj" crossorigin)
 				a-asset-item#parp_mat(src="https://assets.studiozero.xyz/nascent/models/parp_uv.mtl" crossorigin)
@@ -193,9 +203,6 @@ html
 				a-asset-item#dna_single_material(src="https://assets.studiozero.xyz/nascent/models/dna_single_broken.mtl" crossorigin)
 
 				a-asset-item#dna_broken_model(src="assets/models/dna_broken.dae" crossorigin)
-
-				img#damage_label(src="https://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
-				img#inhibitor_label(src="https://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
 
 			a-sky(color="#4f6a7d")
 
@@ -250,12 +257,3 @@ html
 
 			
 			a-camera#camera(position="0 2 5" target="#stage" distance="5" orbit-controls look-controls-enabled=false wasd-controls-enabled=true)
-
-			script.
-				(function(s,t,u,d,i,o,z){s['GoogleAnalyticsObject']=i;s[i]=s[i]||function(){
-				(s[i].q=s[i].q||[]).push(arguments)},s[i].l=1*new Date();o=t.createElement(u),
-				z=t.getElementsByTagName(u)[0];o.async=1;o.src=d;z.parentNode.insertBefore(o,z)
-				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-				ga('create', 'UA-90214138-5', 'auto');
-				ga('send', 'pageview');
