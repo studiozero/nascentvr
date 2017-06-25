@@ -9,6 +9,19 @@ var images = [
 	'assets/images/inhibitor_label.png'
 ]
 
+
+var hidden, visibilityChange; 
+if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	var progress = 0;
@@ -111,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var remove_headset = $('#remove-headset');
 	var outro = $('#outro');
+	var currentSound;
 
 
 	// Sounds
@@ -171,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		removeFromDom(intro);
 
 		playVO(vo1);
+		currentSound = vo1;
 
 		sceneEl.setAttribute('visible', 'true');
 
@@ -208,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	s2Entrance.addEventListener('animationend', function(){
 		hide(scene1);
 		playVO(vo2);
+		currentSound = vo2;
 		PIB.emit('scene-start');
 
 		setTimeout(function(){
@@ -275,5 +291,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Init Functions 
 	loadImages();
+
+
+	//
+
+	document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+
+	function handleVisibilityChange() {
+	if (document[hidden]) {
+	  currentSound.pause();
+	} else {
+	  currentSound.play();
+	}
+	}
 
 })
