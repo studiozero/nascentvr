@@ -3,21 +3,25 @@ var $ = function(el){
 }
 
 
+var images = [
+	'assets/models/parp_tex.png',
+	'assets/images/damage_label.png',
+	'assets/images/inhibitor_label.png'
+]
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
 	var progress = 0;
 	var loaded = 0;
 	var asset_items = document.querySelector('a-assets').children;
-	var total =  asset_items.length;
+	var total =  asset_items.length + images.length;
 	var loading = document.querySelector('.loading');
 	var loader = document.querySelector('.progress');
 	var isChriOS = navigator.userAgent.match('CriOS');
 
 
-
-	// Asset loaded func
+	// Asset loaded function
 	var assetLoaded = function(event){
-		console.log(event.target);
 		loaded = loaded + 1;
 		progress = Math.round( (loaded / total * 100) ) + '%';
 		loader.innerHTML = progress;
@@ -36,6 +40,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	
 	}
 
+
+	var loadImages = function(){
+
+		images.forEach(function(src){
+			var img = new Image();
+		
+			img.onload = function(){
+				assetLoaded();
+			}
+			
+			img.src = src;
+		})
+	
+	}
+
 	// Enter Buttons
 	var enter = $('.enter-buttons');
 	var enter_webvr = $('.enter-vr');
@@ -45,16 +64,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var assets = [];
 	var vr_active = false;
 
-	for(a = 0; a < total; a++){
+	for(a = 0; a < asset_items.length; a++){
+
+		console.log(asset_items[a]);
 		
 		var type = asset_items[a].tagName;
 
-		console.log(type)
-
 		switch(type){
-			case "IMG":
-				asset_items[a].addEventListener('load', assetLoaded);
-				break;
 
 			case "AUDIO":
 				asset_items[a].addEventListener('canplay', assetLoaded);
@@ -257,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		element.setAttribute('visible', 'true');
 	}
 
-
-
+	// Init Functions 
+	loadImages();
 
 })

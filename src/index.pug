@@ -189,11 +189,6 @@ html
 				audio#vo1(src="https://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false" crossorigin)
 				audio#vo2(src="https://assets.studiozero.xyz/nascent/sound/parp-2.mp3" autoplay="false" crossorigin)
 
-				img#background(src="https://assets.studiozero.xyz/nascent/images/background.jpg" crossorigin)
-				img#parp_texture(src="https://assets.studiozero.xyz/nascent/models/parp_tex.png" crossorigin)
-				img#damage_label(src="https://assets.studiozero.xyz/nascent/images/damage_label.png" crossorigin)
-				img#inhibitor_label(src="https://assets.studiozero.xyz/nascent/images/inhibitor_label.png" crossorigin)
-
 				a-asset-item#parp_model(src="https://assets.studiozero.xyz/nascent/models/parp_uv.obj" crossorigin)
 				a-asset-item#parp_mat(src="https://assets.studiozero.xyz/nascent/models/parp_uv.mtl" crossorigin)
 				a-asset-item#dna_model(src="https://assets.studiozero.xyz/nascent/models/dna.obj" crossorigin)
@@ -211,21 +206,21 @@ html
 				a-entity#scene-1(visible="true")
 					a-animation#scene1move(attribute="position" begin="moveOut" to="-20 0 0")
 					
-					a-entity#parp(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
+					a-entity#parp(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: url(assets/models/parp_tex.png)")
 						a-animation#parp(begin="scene-start" attribute="position" to="0 0 0" delay="2000" dur="5000" easing="ease-out")
 						a-animation(attribute="rotation" to="0 360 0" dur="12000" repeat="indefinite" easing="linear")
 						a-animation#parp_exit(begin="scene-start" attribute="position" delay="10000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
 
-					a-entity#parp-inhibitor(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
+					a-entity#parp-inhibitor(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: url(assets/models/parp_tex.png)")
 						a-animation(begin="scene-start" attribute="position" to="0 0 0" delay="10000" dur="5000" easing="linear")
 						a-animation(attribute="rotation" to="0 360 0" dur="12000" repeat="indefinite" easing="linear")
 						a-animation#parp_inhibitor_exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
 
 						a-sphere#inhibitor(position="0.35 0.15 -0.20" color="#16b44b" radius="0.3")
-							a-image(src="#inhibitor_label" height="1.5" width="2.3" rotation="-180 0 -180" position="0 0.85 0")
+							a-image(src="url(assets/images/inhibitor_label.png)" height="1.5" width="2.3" rotation="-180 0 -180" position="0 0.85 0")
 
 					a-entity#dna_single_broken(position="0 0 0" obj-model="obj: #dna_single_model;mtl: #dna_single_material" material="shader: flat; color: white;" rotation="0 0 60")
-						a-image(src="#damage_label" height="1.5" width="2.3" rotation="0 0 -71" position="-0.76 0.44 0.68")
+						a-image(src="url(assets/images/damage_label.png)" height="1.5" width="2.3" rotation="0 0 -71" position="-0.76 0.44 0.68")
 					
 					a-entity#dna(visible="false" position="0 0 0" obj-model="obj: #dna_model;mtl: #dna_material" material="shader: flat; color: white;" rotation="0 0 60")
 
@@ -244,7 +239,7 @@ html
 						a-entity#broken_model_2(collada-model="#dna_broken_model" position="-0.05 0.25 0.09" rotation="32 0 -120")
 							a-animation#break_animation(begin="kill-cell" dur="8000" attribute="position" to="4 -2 0.10" easing="linear")
 
-					a-entity#parp-inhibitor-break(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: #parp_texture")
+					a-entity#parp-inhibitor-break(position="-10 1.5 0" obj-model="obj: #parp_model;mtl:#parp_mat;" material="shader: flat; color: white; src: url(assets/models/parp_tex.png)")
 						a-animation(begin="scene-start" attribute="position" to="0 0 0" dur="5000" easing="linear")
 						a-animation(attribute="rotation" to="0 360 0" dur="12000" repeat="indefinite" easing="linear")
 						a-animation#parp-inhibitor-break-exit(begin="scene-start" attribute="position" delay="15000" from="0 0 0" to="20 -5.5 0" dur="5000" easing="linear")
