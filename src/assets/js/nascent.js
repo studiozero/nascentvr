@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var vo1 = $('#vo1');
 	var vo2 = $('#vo2');
-	var currentSound = vo1;
+	var currentSound = null;
 
 	sounds.push(vo1);
 	sounds.push(vo2);
@@ -161,9 +161,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	enter_mobile.addEventListener('click', function(event){
 		event.preventDefault();
-		// playPause();
-		// begin();
-		openInSafari();
+		playPause();
+		begin();
+		// openInSafari();
 	});
 
 	enter_webvr.addEventListener('click', function(event){
@@ -191,10 +191,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		currentSound = vo1;
 
 		sceneEl.setAttribute('visible', 'true');
-
-		// if(isChriOS){
-		// 	enterVR.style.display = 'none';
-		// }
 
 		parp.emit('scene-start');
 		parp_inhibitor.emit('scene-start');
@@ -250,6 +246,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var initOutro = function(){
 
 		// If we are in VR mode - show remove headset screen - wait - then exit VR mode
+
+		currentSound = null;
 
 		if(vr_active){
 			show_remove();
