@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var loading = document.querySelector('.loading');
 	var loader = document.querySelector('.progress');
 	var isChriOS = navigator.userAgent.match('CriOS') ? true : false;
+	var isLandscape = window.matchMedia("(orientation: landscape)").matches;
 	var chromeMsg = $('.chrome-message');
-
 
 	// Asset loaded function
 	var assetLoaded = function(event){
