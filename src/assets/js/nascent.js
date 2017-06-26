@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var total =  asset_items.length + images.length;
 	var loading = document.querySelector('.loading');
 	var loader = document.querySelector('.progress');
-	var isChriOS = navigator.userAgent.match('CriOS');
+	var isChriOS = navigator.userAgent.match('CriOS') ? true : false;
 
 
 	// Asset loaded function
@@ -47,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var showStartScreen = function(){
 		enter.style.display = 'block';
 
-		if(navigator.userAgent.match('CriOS')){
-			hide(enter_webvr);
+		if(isChriOS){
+			enter_webvr.style.display = 'none';
 		}
 	
 	}
@@ -78,8 +78,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var vr_active = false;
 
 	for(a = 0; a < asset_items.length; a++){
-
-		console.log(asset_items[a]);
 		
 		var type = asset_items[a].tagName;
 
@@ -124,7 +122,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var remove_headset = $('#remove-headset');
 	var outro = $('#outro');
-	var currentSound;
+
+	var enterVR = $('.a-enter-vr');
 
 
 	// Sounds
@@ -133,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	var vo1 = $('#vo1');
 	var vo2 = $('#vo2');
+	var currentSound = vo1;
 
 	sounds.push(vo1);
 	sounds.push(vo2);
@@ -189,8 +189,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		sceneEl.setAttribute('visible', 'true');
 
-		if(!isChriOS){
-			sceneEl.setAttribute('vr-mode-ui', 'enabled:true');
+		if(isChriOS){
+			enterVR.style.display = 'none';
 		}
 
 		parp.emit('scene-start');

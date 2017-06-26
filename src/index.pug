@@ -2,132 +2,147 @@
 doctype html
 html
 	head
-	meta(charset='utf-8')
-	meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
-	title NascentVR
-	meta(name='description', content='')
-	script.
-		(function(s,t,u,d,i,o,z){s['GoogleAnalyticsObject']=i;s[i]=s[i]||function(){
-			(s[i].q=s[i].q||[]).push(arguments)},s[i].l=1*new Date();o=t.createElement(u),
-			z=t.getElementsByTagName(u)[0];o.async=1;o.src=d;z.parentNode.insertBefore(o,z)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-90214138-5', 'auto');
-			ga('send', 'pageview');
-	script(src="assets/js/main.js")
-	link(rel="stylesheet", href="assets/css/main.css")
-
-	style(type='text/css').
-  
-		.intro{
-			background-color: rgba(23, 23, 23, 0.9);
-			display: flex;
-			top: 0;
-			left: 0;
-			right: 0;
-			left: 0;
-			z-index: 1000;
-			width: 100vw;
-			height: 100vh;
-			color: #FFF;
-			align-items: center;
-			justify-content: center;
-			font-family: Montserrat, sans-serif;
-			flex-direction: column;
-			text-align: center;
-		}
-
-		.splash-title{
-			margin-bottom:0;
-		}
-
-		.subtitle{
-			font-weight:100;
-		}
-
-		button{
-			border: 2px solid #fff;
-			border-radius: 0;
-			background: transparent;
-			padding: .3em .6em;
-			font-size: 2rem;
-			font-size: 3.22vmin;
-			color: #fff;
-			pointer-events: auto;
-		}
-
-		button:hover{
-			cursor:pointer;
-		}
-
-		.enter-btn{
-			display: block;
-			border-color: #fff;
-			margin: 0 auto 1.05em;
-			text-align: left;
-			color: #fff;
-			width: 580px;
-			padding: 0;
-			background: no-repeat 100% 0;
-			background-size: contain;
-			position: relative;
-		}
-
-		.enter-btn h3{
-			padding: .23em .5em;
-			display: inline-block;
-			width: 75%;
-			border-right: 2px solid #fff;
-			-webkit-transition: border .2s;
-			transition: border .2s;
-		}
-
-		.enter-btn h3 svg{
-			position: absolute;
-			height: 65px;
-			width: 70px;
-			position: absolute;
-			right:12px;
-		}
-
-		.heading-3{
-			font-family: HelveticaNeueLTStd-Th,sans-serif;
-			font-style: normal;
-			padding: 0;
-			margin: 0;
-			line-height: 1.3em;
-			letter-spacing: -.03em;
-			font-weight: 400;
-			font-size: 3rem;
-		}
-
+		meta(property="og:title", content="NascentVR - A WebVR Mechanism of Action")
+		meta(property="og:url", content="http://nascentvr.surge.sh")
+		meta(property="og:image", content="https://nascentvr.surge.sh/assets/images/nvrOG.jpg")
+		meta(property="og:favicon", content="http://www.studiozero.co/assets/images/favicon.ico")
+		meta(property="og:description", content="A WebVR Mechanism of Action by Studio Zero and Nascent Medical")
 		
-		@media screen and (max-width: 600px) {
-			
-			.enter-btn{
-				width: 100%;
-				padding: 10px;
-			}
-			
-			.enter-btn h3{
-				border:none;
+		meta(property="twitter:description", content="A WebVR Mechanism of Action by Studio Zero and Nascent Medical")
+		meta(property="twitter:title", content="NascentVR - A WebVR Mechanism of Action")
+		meta(property="twitter:site", content="@studiozeroco")
+		meta(property="twitter:card", content="summary")
+		meta(property="twitter:image", content="https://nascentvr.surge.sh/assets/images/nvrOG.jpg")
+
+		meta(charset='utf-8')
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+		title NascentVR
+		meta(name='description', content='')
+		script.
+			(function(s,t,u,d,i,o,z){s['GoogleAnalyticsObject']=i;s[i]=s[i]||function(){
+				(s[i].q=s[i].q||[]).push(arguments)},s[i].l=1*new Date();o=t.createElement(u),
+				z=t.getElementsByTagName(u)[0];o.async=1;o.src=d;z.parentNode.insertBefore(o,z)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+				ga('create', 'UA-90214138-5', 'auto');
+				ga('send', 'pageview');
+		link(rel="apple-touch-icon" sizes="180x180" href="https://studiozero.co/favicons/apple-touch-icon.png")
+		link(rel="icon" type="image/png" href="https://studiozero.co/favicons/favicon-32x32.png" sizes="32x32")
+		link(rel="icon" type="image/png" href="https://studiozero.co/favicons/favicon-16x16.png" sizes="16x16")
+		script(src="assets/js/main.js")
+		link(rel="stylesheet", href="assets/css/main.css")
+
+		style(type='text/css').
+	  
+			.intro{
+				background-color: rgba(23, 23, 23, 0.9);
+				display: flex;
+				top: 0;
+				left: 0;
+				right: 0;
+				left: 0;
+				z-index: 1000;
+				width: 100vw;
+				height: 100vh;
+				color: #FFF;
+				align-items: center;
+				justify-content: center;
+				font-family: Montserrat, sans-serif;
+				flex-direction: column;
 				text-align: center;
-				padding: 0.5rem 0;
-				width:100%;
 			}
 
-			.heading-3{
+			.splash-title{
+				margin-bottom:0;
+			}
+
+			.subtitle{
+				font-weight:100;
+			}
+
+			button{
+				border: 2px solid #fff;
+				border-radius: 0;
+				background: transparent;
+				padding: .3em .6em;
 				font-size: 2rem;
+				font-size: 3.22vmin;
+				color: #fff;
+				pointer-events: auto;
+			}
+
+			button:hover{
+				cursor:pointer;
+			}
+
+			.enter-btn{
+				display: block;
+				border-color: #fff;
+				margin: 0 auto 1.05em;
+				text-align: left;
+				color: #fff;
+				width: 580px;
+				padding: 0;
+				background: no-repeat 100% 0;
+				background-size: contain;
+				position: relative;
+			}
+
+			.enter-btn h3{
+				padding: .23em .5em;
+				display: inline-block;
+				width: 75%;
+				border-right: 2px solid #fff;
+				-webkit-transition: border .2s;
+				transition: border .2s;
 			}
 
 			.enter-btn h3 svg{
-				display: none
+				position: absolute;
+				height: 65px;
+				width: 70px;
+				position: absolute;
+				right:12px;
 			}
 
-			.hidden-small{
-				display: none
+			.heading-3{
+				font-family: HelveticaNeueLTStd-Th,sans-serif;
+				font-style: normal;
+				padding: 0;
+				margin: 0;
+				line-height: 1.3em;
+				letter-spacing: -.03em;
+				font-weight: 400;
+				font-size: 3rem;
 			}
-		}
+
+			
+			@media screen and (max-width: 600px) {
+				
+				.enter-btn{
+					width: 100%;
+					padding: 10px;
+				}
+				
+				.enter-btn h3{
+					border:none;
+					text-align: center;
+					padding: 0.5rem 0;
+					width:100%;
+				}
+
+				.heading-3{
+					font-size: 2rem;
+				}
+
+				.enter-btn h3 svg{
+					display: none
+				}
+
+				.hidden-small{
+					display: none
+				}
+			}
 
 
 	body
@@ -183,7 +198,7 @@ html
 				a(href="https://nascentmc.com" target="_blank") Nascent Medical
 
 
-		a-scene(visible="false" vr-mode-ui="enabled: false")
+		a-scene(visible="false" vr-mode-ui="enabled: true")
 			a-assets(timeout="40000")
 				
 				audio#vo1(src="https://assets.studiozero.xyz/nascent/sound/parp-1.mp3" autoplay="false" crossorigin)
