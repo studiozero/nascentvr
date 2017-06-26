@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var loading = document.querySelector('.loading');
 	var loader = document.querySelector('.progress');
 	var isChriOS = navigator.userAgent.match('CriOS') ? true : false;
+	var chromeMsg = $('.chrome-message');
 
 
 	// Asset loaded function
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		if(isChriOS){
 			enter_webvr.style.display = 'none';
+			chromeMsg.style.display = 'block';
 		}
 	
 	}
@@ -159,8 +161,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	enter_mobile.addEventListener('click', function(event){
 		event.preventDefault();
-		playPause();
-		begin();
+		// playPause();
+		// begin();
+		openInSafari();
 	});
 
 	enter_webvr.addEventListener('click', function(event){
@@ -291,7 +294,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	// Init Functions 
 	loadImages();
-
 
 	//
 
