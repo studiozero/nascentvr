@@ -189,9 +189,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		sceneEl.setAttribute('visible', 'true');
 
-		if(isChriOS){
-			enterVR.style.display = 'none';
-		}
+		// if(isChriOS){
+		// 	enterVR.style.display = 'none';
+		// }
 
 		parp.emit('scene-start');
 		parp_inhibitor.emit('scene-start');
